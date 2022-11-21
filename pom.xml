@@ -3,18 +3,18 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>tech.solutionarchitects.tracking_sdk</groupId>
   <artifactId>beta</artifactId>
-  <version>0.0.11</version>
+  <version>0.0.12</version>
   <packaging>aar</packaging>
   <build>
-       <plugins>
-           <plugin>
-               <groupId>com.simpligility.maven.plugins</groupId>
-               <artifactId>android-maven-plugin</artifactId>
-               <version>4.3.0</version> <!-- use latest release -->
-               <extensions>true</extensions>
-           </plugin>
-       </plugins>
-   </build>
+    <plugins>
+      <plugin>
+        <groupId>com.simpligility.maven.plugins</groupId>
+        <artifactId>android-maven-plugin</artifactId>
+        <version>4.3.0</version> <!-- use latest release -->
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build>
   <dependencies>
     <dependency>
       <groupId>androidx.core</groupId>
