@@ -1,3 +1,9 @@
+# Documentation
+
+Please see detailed documentation, here:
+
+[https://docs.ad4tech.net/sdk-tracker-android.html](https://docs.ad4tech.net/sdk-tracker-android.html)
+
 # Tracking SDK Android
 
 Tracking SDK is used to track targeted user actions in the mobile app and further analyze this information.
@@ -12,7 +18,7 @@ You should be aware of the following options required to initialize and use the 
 
 **SDK version**: 0.0.13
 
-**Demo**: [tracking-demo-app](tracking-demo-app/README.md)
+**Demo**: [tracking-demo-app](tracking-demo-app/)
 
 **Requirements**
 
