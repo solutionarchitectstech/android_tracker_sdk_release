@@ -101,16 +101,29 @@ Each time an event is dispatched, the Tracking SDK passes a set of parameters:
 Displaying an advertising banner to the user.
 
 ```kotlin
+// REGULAR EVENT
 val event = AdImp(
-    placementId = “MainPage”,
-    width = 210,
-    height = 210,
-    href = “https://site.com”,
-    category = “category”,
-    subcategory = “subcategory”
+        placementId = "1234",
+        width = 320,
+        height = 240,
+        href = "www.google.com",
+        category = "category",
+        subcategory = "subcategory"
 )
-event.page = “MainPage”
+event.page = "MainActivity"
+tracker.event(event)
 
+// THE SAME EVENT with customParams
+val event = AdImp(
+        placementId = "1234",
+        width = 320,
+        height = 240,
+        href = "www.google.com",
+        category = "category",
+        subcategory = "subcategory",
+        customParams = mapOf("sample1" to "value1")
+)
+event.page = "MainActivity"
 tracker.event(event)
 ```
 
@@ -118,9 +131,10 @@ tracker.event(event)
 - `width` - placement width
 - `height` - placement height
 - `href` - banner click link
-- `category` - product category
-- `subcategory` - product subcategory
-- `page` - the name of the screen the user is on
+- `category` - (optional) product category
+- `subcategory` - (optional) product subcategory
+- `page` - (optional) the name of the screen the user is on
+- `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
 
 #### Scroll
 
@@ -128,20 +142,30 @@ Scrolling content (for example, a list of products).
 
 
 ```kotlin
+// REGULAR EVENT
 val event = Scroll(
-    value = 0.4,
-    category = “category”,
-    subcategory = “subcategory”
+        value = 0.4,
+        category = "category",
+        subcategory = "subcategory"
 )
-event.page = “MainPage”
+event.page = "MainActivity"
+tracker.event(event)
 
+val event = Scroll(
+        value = 0.4,
+        category = "category",
+        subcategory = "subcategory",
+        customParams = mapOf("sample1" to "value1")
+)
+event.page = "MainActivity"
 tracker.event(event)
 ```
 
-- `category` - product category
-- `subcategory` - product subcategory
+- `category` - (optional) product category
+- `subcategory` - (optional) product subcategory
 - `value` - a value between 0 and 1 describing how much content was scrolled as a percentage
-- `page` - the name of the screen the user is on
+- `page` - (optional) the name of the screen the user is on
+- `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
 
 #### AdClick
 
@@ -149,16 +173,29 @@ Click on an advertising banner.
 
 
 ```kotlin
+// REGULAR EVENT
 val event = AdClick(
-    placementId = “MainPage”,
-    width = 210,
-    height = 210,
-    href = “https://site.com”,
-    category = “category”,
-    subcategory = “subcategory”
+        placementId = "1234",
+        width = 320,
+        height = 240,
+        href = "www.google.com",
+        category = "category",
+        subcategory = "subcategory"
 )
-event.page = “MainPage”
+event.page = "MainActivity"
+tracker.event(event)
 
+// THE SAME EVENT with customParams
+val event = AdClick(
+        placementId = "1234",
+        width = 320,
+        height = 240,
+        href = "www.google.com",
+        category = "category",
+        subcategory = "subcategory",
+        customParams = mapOf("sample1" to "value1")
+)
+event.page = "MainActivity"
 tracker.event(event)
 ```
 
@@ -166,9 +203,10 @@ tracker.event(event)
 - `width` - placement width
 - `height` - placement height
 - `href` - banner click link
-- `category` - product category
-- `subcategory` - product subcategory
-- `page` - the name of the screen the user is on
+- `category` - (optional) product category
+- `subcategory` - (optional) product subcategory
+- `page` - (optional) the name of the screen the user is on
+- `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
 
 #### AddToCart
 
@@ -176,13 +214,25 @@ User click on the add to cart button.
 
 ```kotlin
 val event = AddToCart()
-event.add(id = "1",
-        name = "Football",
+event.page = "MainActivity"
+
+event.add(AddToCartItem(
+        id = "1",
+        name = "box",
         price = 5.99,
         currency = "RUB",
-        category = "sport",
-        subcategory = "boys")
-event.page = “MainPage”
+        category = "category",
+        subcategory = "subcategory",
+))
+event.add(AddToCartItem(
+        id = "2",
+        name = "pizza",
+        price = 399.99,
+        currency = "RUB",
+        category = "category",
+        subcategory = "subcategory",
+        customParams = mapOf("sample1" to "value1") 
+))
 
 tracker.event(event)
 ```
@@ -191,9 +241,10 @@ tracker.event(event)
 - `name` - product name
 - `currency` - currency
 - `price` - product price
-- `category` - product cateogry
-- `subcategory` - product subcateogry
-- `page` - the name of the screen the user is on
+- `category` - (optional) product cateogry
+- `subcategory` - (optional) product subcateogry
+- `page` - (optional) the name of the screen the user is on
+- `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
 
 #### Purchase
 
@@ -201,14 +252,26 @@ User purchases goods in the system.
 
 
 ```kotlin
-val event = CartPurchase()
-event.add(id = "1",
-    name = "Football",
-    price = 5.99,
-    currency = "RUB",
-    category = "sport",
-    subcategory = "boys")
-event.page = “MainPage”
+val event = Purchase()
+event.page = "MainActivity"
+
+event.add(PurchaseItem(
+        id = "1",
+        name = "box",
+        price = 5.99,
+        currency = "RUB",
+        category = "category",
+        subcategory = "subcategory",
+))
+event.add(PurchaseItem(
+        id = "2",
+        name = "pizza",
+        price = 399.99,
+        currency = "RUB",
+        category = "category",
+        subcategory = "subcategory",
+        customParams = mapOf("sample1" to "value1")
+))
 
 tracker.event(event)
 ```
@@ -217,23 +280,35 @@ tracker.event(event)
 - `name` - product name
 - `currency` - currency
 - `price` - product price
-- `category` - product cateogry
-- `subcategory` - product subcateogry
-- `page` - the name of the screen the user is on
+- `category` - (optional) product cateogry
+- `subcategory` - (optional) product subcateogry
+- `page` - (optional) the name of the screen the user is on
+- `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
 
 #### Search
 
 Search (for example, search for a product).
 
 ```kotlin
-val event = Search(value = “search something”)
-event.page = “MainPage”
+// REGULAR EVENT
+val event = Search(
+        value = "search something"
+)
+event.page = "MainPage"
+tracker.event(event)
 
+// THE SAME EVENT with customParams
+val event = Search(
+        value = "search something",
+        customParams = mapOf("sample1" to "value1")
+)
+event.page = "MainPage"
 tracker.event(event)
 ```
 
 - `value` - search phrase
-- `page` - the name of the screen the user is on
+- `page` - (optional) the name of the screen the user is on
+- `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
 
 #### StartView
 
@@ -241,68 +316,130 @@ The user starts viewing the product card.
 
 
 ```kotlin
-val event = StartView(id = "1", name = "Football", category = "sport", subcategory = "boys")
-event.page = “MainPage”
+// REGULAR EVENT
+val event = StartView(
+        id = "1",
+        name = "Football",
+        category = "sport",
+        subcategory = "boys"
+)
+event.page = "MainPage"
+tracker.event(event)
 
+// THE SAME EVENT with customParams
+val event = StartView(
+        id = "1",
+        name = "Football",
+        category = "sport",
+        subcategory = "boys",
+        customParams = mapOf("sample1" to "value1")
+)
+event.page = "MainPage"
 tracker.event(event)
 ```
 
 - `id` - product id
 - `name` - product name
-- `category` - product cateogry
-- `subcategory` - product subcateogry
-- `page` - the name of the screen the user is on
+- `category` - (optional) product cateogry
+- `subcategory` - (optional) product subcateogry
+- `page` - (optional) the name of the screen the user is on
+- `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
 
 #### StopView
 
 User finished content viewing.
 
 ```kotlin
-val event = StopView(id = "1",
-                    name = "Football",
-                    value = 0.3,
-                    category = "sport",
-                    subcategory = "boys")
-event.page = “MainPage”
+// REGULAR EVENT
+val event = StopView(
+        id = "1",
+        name = "Football",
+        value = 0.3,
+        category = "sport",
+        subcategory = "boys"
+)
+event.page = "MainPage"
+tracker.event(event)
 
+// THE SAME EVENT with customParams
+val event = StopView(
+        id = "1",
+        name = "Football",
+        value = 0.3,
+        category = "sport",
+        subcategory = "boys",
+        customParams = mapOf("sample1" to "value1")
+)
+event.page = "MainPage"
 tracker.event(event)
 ```
 
 - `id` - product id
 - `name` - product name
-- `category` - product cateogry
-- `subcategory` - product subcateogry
-- `page` - the name of the screen the user is on
+- `category` - (optional) product cateogry
+- `subcategory` - (optional) product subcateogry
+- `page` - (optional) the name of the screen the user is on
 - `value` - a value between 0 and 1 describing how much content was scrolled as a percentage
+- `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
 
 #### Viewing
 
 The user continues viewing the content.
 
 ```kotlin
-val event = Viewing(id = 1, name = "Football", value = 0.3, category = "sport", subcategory = "boys")
-event.page = “MainPage”
+// REGULAR EVENT
+val event = Viewing(
+        id = 1, 
+        name = "Football", 
+        value = 0.3, 
+        category = "sport", 
+        subcategory = "boys"
+)
+event.page = "MainPage"
+tracker.event(event)
 
+// THE SAME EVENT with customParams
+val event = Viewing(
+        id = 1,
+        name = "Football",
+        value = 0.3,
+        category = "sport",
+        subcategory = "boys",
+        customParams = mapOf("sample1" to "value1")
+)
+event.page = "MainPage"
 tracker.event(event)
 ```
 
 - `id` - product id
 - `name` - product name
-- `category` - product cateogry
-- `subcategory` - product subcateogry
-- `page` - the name of the screen the user is on
+- `category` - (optional) product cateogry
+- `subcategory` - (optional) product subcateogry
+- `page` - (optional) the name of the screen the user is on
 - `value` - a value between 0 and 1 describing how much content was scrolled as a percentage
+- `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
 
 #### Click
 
 Click on a significant element in the interface ( links, buttons, product card in the product list, etc.).
 
 ```kotlin
-val event = Click(value = "Click value")
-event.page = “MainPage”
+// REGULAR EVENT
+val event = Click(
+        value = "Click value"
+)
+event.page = "MainPage"
+tracker.event(event)
 
+// THE SAME EVENT with customParams
+val event = Click(
+        value = "Click value",
+        customParams = mapOf("sample1" to "value1")
+)
+event.page = "MainPage"
 tracker.event(event)
 ```
 
 - `value` - a string with a description of which element was clicked ( url for external links )
-- `page` - the name of the screen the user is on
+- `page` - (optional) the name of the screen the user is on
+- `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
