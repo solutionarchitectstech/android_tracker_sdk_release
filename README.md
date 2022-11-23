@@ -1,7 +1,3 @@
-# Tracking SDK Demo app
-
-
-
 # Tracking SDK Android
 
 Tracking SDK is used to track targeted user actions in the mobile app and further analyze this information.
