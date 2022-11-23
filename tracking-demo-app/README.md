@@ -1,34 +1,74 @@
-# tracking-demo-app
-This Android demo project covers all usages of the library [solutionarchitectstech:android_tracker_sdk_release](https://github.com/solutionarchitectstech/android_tracker_sdk_release)
+# Tracking Demo app
 
-![banner-view](README_md/fullscreen.png)
+The Demo app consist of 2 columns with buttons. Each button represents one provided TrackingEvent:
 
-## 1. Add the dependency to your project
-Before usage of the SDK Developer has to add the following dependency to app-module gradle file (the dependency block):
-```groovy
-dependencies
-{
-    //... other dependencies
-    implementation 'com.github.solutionarchitectstech:android_tracker_sdk_release:0.0.13'
-    //... other dependencies
-}
-```
++ 1'st column: buttons to track regular events, such as: `AddToCart` event, `StartView` event, etc.
++ 2'nd column: buttons to track the same event, but with extra `customParams` argument in the call.
 
-## 2. initialization of the library
-```kotlin
-val options = ECOptions(
-    bundle = "com.example",
-    partnerId = "1234",
-    uid = "1234")
+![tracking-demo-app-screen](README_md/tracking-demo-app-screen.jpg)
 
-val tracker = ECTracker.initialize(options)
-```
+## Run application
 
-## 3. track en event
-```kotlin
-val event = ECAddToCart()
-event.page = "MainActivity"
-event.add("1", "box", 5.99, "RUB", "category", "subcategory")
-event.add("2", "pizza", 399.99, "RUB", "category", "subcategory")
-tracker.event(event)
-```
++ Open the tracking-demo-app in the AndroidStudio.
+
+
++ Initialize the Tracking SDK.
+
+  + Open [MainActivity.kt](app/src/main/java/com/example/tracking_sdk/MainActivity.kt) file.
+
+  + Set up the following properties in the `TrackerOptions` shown in the code below:
+
+      ```kotlin
+      override fun onCreate(savedInstanceState: Bundle?) {
+          super.onCreate(savedInstanceState)
+          setContentView(R.layout.activity_main)
+        
+          val options = TrackerOptions(
+              bundle = "com.example",
+              partnerId = "1234",
+              uid = "1234",
+              baseUrl = "https://my-server.com/",
+              debugMode = true,
+              headers = mapOf("Authorization" to {
+                  "Bearer Test"
+              })
+          )
+          val tracker = TechTracker.initialize(options)
+    
+          . . .
+      ```
+
++ Run the app. Then open `Run` tab in the AndroidStudio.
+
+
++ Tap on buttons to see the log output.
+There, you can see the JSON request to see what properties sent to backend.  
+
+    ![tracking-demo-app-log](README_md/tracking-demo-app-log.jpg)
+
+
++ Here, couple examples how to track regular event and how to send the event with `customParams`. 
+See [MainActivity.kt](app/src/main/java/com/example/tracking_sdk/MainActivity.kt) for more details.
+Eg (`Scroll` event):
+
+  ```kotlin
+  // REGULAR EVENT
+  val event = Scroll(
+      value = 1.2,
+      category = "category",
+      subcategory = "subcategory",
+      customParams = mapOf("sample1" to "value1")
+  )
+  event.page = "MainActivity"
+  tracker.event(event)
+  
+  // THE SAME EVENT (with customParams)
+  val event = Scroll(
+      value = 1.2,
+      category = "category",
+      subcategory = "subcategory",
+      customParams = mapOf("sample1" to "value1") // <- !!! Here is customParams
+  )
+  event.page = "MainActivity"
+  tracker.event(event)
+  ```
