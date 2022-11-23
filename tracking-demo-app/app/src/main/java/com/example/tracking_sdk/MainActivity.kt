@@ -183,19 +183,6 @@ class MainActivity : AppCompatActivity() {
                 name = "Ads",
                 value = 0.4,
                 category = "category",
-                subcategory = "subcategory"
-            )
-            event.page = "MainActivity"
-
-            tracker.event(event)
-        }
-
-        findViewById<Button>(R.id.button_stop_view_custom_params).setOnClickListener {
-            val event = StopView(
-                id = "1",
-                name = "Ads",
-                value = 0.4,
-                category = "category",
                 subcategory = "subcategory",
                 customParams = mapOf("sample1" to "value1")
             )
@@ -320,7 +307,6 @@ class MainActivity : AppCompatActivity() {
                 value = 1.2,
                 category = "category",
                 subcategory = "subcategory",
-                customParams = mapOf("sample1" to "value1")
             )
             event.page = "MainActivity"
 
