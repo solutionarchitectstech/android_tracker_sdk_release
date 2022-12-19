@@ -1,4 +1,4 @@
-# Ignore OS generated files and coommons
+# Ignore OS generated files and commons
 .DS_Store*
 ehthumbs.db
 Thumbs.db
