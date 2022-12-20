@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                 currency = "RUB",
                 category = "category",
                 subcategory = "subcategory",
+                quantity = 2.0F,
             ))
 
             tracker.event(event)
@@ -87,6 +88,7 @@ class MainActivity : AppCompatActivity() {
                 currency = "RUB",
                 category = "category",
                 subcategory = "subcategory",
+                quantity = 2.0F,
                 customParams = mapOf("sample1" to "value1")
             ))
 
@@ -112,6 +114,7 @@ class MainActivity : AppCompatActivity() {
                 currency = "RUB",
                 category = "category",
                 subcategory = "subcategory",
+                quantity = 2.0F,
             ))
 
             tracker.event(event)
@@ -137,6 +140,7 @@ class MainActivity : AppCompatActivity() {
                 currency = "RUB",
                 category = "category",
                 subcategory = "subcategory",
+                quantity = 2.0F,
                 customParams = mapOf("sample1" to "value1")
             ))
 

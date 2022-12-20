@@ -20,7 +20,7 @@ You should be aware of the following options required to initialize and use the 
 - baseUrl - URL API of advertising system. For example: `"https://my.server.com/"`
 
 
-**SDK version**: 0.0.13
+**SDK version**: 0.0.14
 
 **Demo**: [tracking-demo-app](tracking-demo-app/)
 
@@ -34,7 +34,7 @@ You should be aware of the following options required to initialize and use the 
 ```-vue
 dependencies {
     //... other dependencies
-    implementation 'com.github.solutionarchitectstech:android_tracker_sdk_release:0.0.13'
+    implementation 'com.github.solutionarchitectstech:android_tracker_sdk_release:0.0.14'
     
     //... other dependencies
 }
@@ -231,6 +231,7 @@ event.add(AddToCartItem(
         currency = "RUB",
         category = "category",
         subcategory = "subcategory",
+        quantity = 2.0F,
         customParams = mapOf("sample1" to "value1") 
 ))
 
@@ -245,7 +246,7 @@ tracker.event(event)
 - `subcategory` - (optional) product subcateogry
 - `page` - (optional) the name of the screen the user is on
 - `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
-
+- `quantity` - (optional, default: 1.0) the quantity of the product
 #### Purchase
 
 User purchases goods in the system.
@@ -270,6 +271,7 @@ event.add(PurchaseItem(
         currency = "RUB",
         category = "category",
         subcategory = "subcategory",
+        quantity = 2.0F,
         customParams = mapOf("sample1" to "value1")
 ))
 
@@ -284,6 +286,7 @@ tracker.event(event)
 - `subcategory` - (optional) product subcateogry
 - `page` - (optional) the name of the screen the user is on
 - `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
+- `quantity` - (optional, default: 1.0) the quantity of the product
 
 #### Search
 
