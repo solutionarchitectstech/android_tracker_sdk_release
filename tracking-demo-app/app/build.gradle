@@ -33,7 +33,7 @@ android {
 
 dependencies {
     // tracking library
-    implementation 'com.github.solutionarchitectstech:android_tracker_sdk_release:0.0.14'
+    implementation 'com.github.solutionarchitectstech:android_tracker_sdk_release:0.0.15'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
