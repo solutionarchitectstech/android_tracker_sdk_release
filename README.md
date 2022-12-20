@@ -151,6 +151,7 @@ val event = Scroll(
 event.page = "MainActivity"
 tracker.event(event)
 
+// THE SAME EVENT with customParams
 val event = Scroll(
         value = 0.4,
         category = "category",
@@ -216,6 +217,7 @@ User click on the add to cart button.
 val event = AddToCart()
 event.page = "MainActivity"
 
+// REGULAR EVENT
 event.add(AddToCartItem(
         id = "1",
         name = "box",
@@ -224,6 +226,8 @@ event.add(AddToCartItem(
         category = "category",
         subcategory = "subcategory",
 ))
+
+// THE SAME EVENT with customParams
 event.add(AddToCartItem(
         id = "2",
         name = "pizza",
@@ -256,6 +260,7 @@ User purchases goods in the system.
 val event = Purchase()
 event.page = "MainActivity"
 
+// REGULAR EVENT
 event.add(PurchaseItem(
         id = "1",
         name = "box",
@@ -264,6 +269,8 @@ event.add(PurchaseItem(
         category = "category",
         subcategory = "subcategory",
 ))
+
+// THE SAME EVENT with customParams
 event.add(PurchaseItem(
         id = "2",
         name = "pizza",
@@ -382,7 +389,7 @@ tracker.event(event)
 - `category` - (optional) product cateogry
 - `subcategory` - (optional) product subcateogry
 - `page` - (optional) the name of the screen the user is on
-- `value` - a value between 0 and 1 describing how much content was scrolled as a percentage
+- `value` - a value between 0 and 1 describing how much content has been reviewed as a percentage
 - `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
 
 #### Viewing
@@ -419,7 +426,7 @@ tracker.event(event)
 - `category` - (optional) product cateogry
 - `subcategory` - (optional) product subcateogry
 - `page` - (optional) the name of the screen the user is on
-- `value` - a value between 0 and 1 describing how much content was scrolled as a percentage
+- `value` - a value between 0 and 1 describing how much content has been reviewed as a percentage
 - `customParams` - (optional) `Map<String, String>` custom parameters to add to tracking event
 
 #### Click
