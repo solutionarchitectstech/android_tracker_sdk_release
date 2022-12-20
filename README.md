@@ -20,7 +20,7 @@ You should be aware of the following options required to initialize and use the 
 - baseUrl - URL API of advertising system. For example: `"https://my.server.com/"`
 
 
-**SDK version**: 0.0.18
+**SDK version**: 0.0.19
 
 **Demo**: [tracking-demo-app](tracking-demo-app/)
 
@@ -34,7 +34,7 @@ You should be aware of the following options required to initialize and use the 
 ```-vue
 dependencies {
     //... other dependencies
-    implementation 'com.github.solutionarchitectstech:android_tracker_sdk_release:0.0.18'
+    implementation 'com.github.solutionarchitectstech:android_tracker_sdk_release:0.0.19'
     
     //... other dependencies
 }
