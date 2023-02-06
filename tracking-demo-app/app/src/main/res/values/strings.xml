@@ -18,4 +18,5 @@
 
 <resources>
     <string name="app_name">TrackingSDK-Demo</string>
+    <string name="send_micro_event">send micro-event</string>
 </resources>
