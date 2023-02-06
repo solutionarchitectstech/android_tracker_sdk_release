@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             bundle = "com.example",
             partnerId = "1234",
             uid = "1234",
-            endpointUrl = "https://mb.rktch.com/t_events",
+            endpointUrl = "https://my-server.com/",
             debugMode = true,
             headers = mapOf("Authorization" to {
                 "Bearer Test"
