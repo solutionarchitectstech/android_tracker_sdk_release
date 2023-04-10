@@ -47,23 +47,30 @@ class MainActivity : AppCompatActivity() {
             val event = AddToCart()
             event.page = "MainActivity"
 
-            event.add(AddToCartItem(
-                id = "1",
-                name = "box",
-                price = 5.99,
-                currency = "RUB",
-                category = "category",
-                subcategory = "subcategory",
-            ))
-            event.add(AddToCartItem(
-                id = "2",
-                name = "pizza",
-                price = 399.99,
-                currency = "RUB",
-                category = "category",
-                subcategory = "subcategory",
-                quantity = 2.0F,
-            ))
+            event.add(
+                AddToCartItem(
+                    id = "1",
+                    name = "box",
+                    price = 5.99,
+                    currency = "RUB",
+                    category = "category",
+                    subcategory = "subcategory",
+                    quantity = 1f,
+                    deltaQuantity = 1f
+                )
+            )
+            event.add(
+                AddToCartItem(
+                    id = "2",
+                    name = "pizza",
+                    price = 399.99,
+                    currency = "RUB",
+                    category = "category",
+                    subcategory = "subcategory",
+                    quantity = 2f,
+                    deltaQuantity = 1f
+                )
+            )
 
             tracker.event(event)
         }
@@ -72,25 +79,32 @@ class MainActivity : AppCompatActivity() {
             val event = AddToCart()
             event.page = "MainActivity"
 
-            event.add(AddToCartItem(
-                id = "1",
-                name = "box",
-                price = 5.99,
-                currency = "RUB",
-                category = "category",
-                subcategory = "subcategory",
-                customParams = mapOf("sample1" to "value1")
-            ))
-            event.add(AddToCartItem(
-                id = "2",
-                name = "pizza",
-                price = 399.99,
-                currency = "RUB",
-                category = "category",
-                subcategory = "subcategory",
-                quantity = 2.0F,
-                customParams = mapOf("sample1" to "value1")
-            ))
+            event.add(
+                AddToCartItem(
+                    id = "1",
+                    name = "box",
+                    price = 5.99,
+                    currency = "RUB",
+                    category = "category",
+                    subcategory = "subcategory",
+                    customParams = mapOf("sample1" to "value1"),
+                    quantity = 1f,
+                    deltaQuantity = 1f,
+                )
+            )
+            event.add(
+                AddToCartItem(
+                    id = "2",
+                    name = "pizza",
+                    price = 399.99,
+                    currency = "RUB",
+                    category = "category",
+                    subcategory = "subcategory",
+                    quantity = 2f,
+                    deltaQuantity = 1f,
+                    customParams = mapOf("sample1" to "value1")
+                )
+            )
 
             tracker.event(event)
         }
@@ -99,23 +113,28 @@ class MainActivity : AppCompatActivity() {
             val event = Purchase()
             event.page = "MainActivity"
 
-            event.add(PurchaseItem(
-                id = "1",
-                name = "box",
-                price = 5.99,
-                currency = "RUB",
-                category = "category",
-                subcategory = "subcategory",
-            ))
-            event.add(PurchaseItem(
-                id = "2",
-                name = "pizza",
-                price = 399.99,
-                currency = "RUB",
-                category = "category",
-                subcategory = "subcategory",
-                quantity = 2.0F,
-            ))
+            event.add(
+                PurchaseItem(
+                    id = "1",
+                    name = "box",
+                    price = 5.99,
+                    currency = "RUB",
+                    category = "category",
+                    subcategory = "subcategory",
+                    quantity = 1f,
+                )
+            )
+            event.add(
+                PurchaseItem(
+                    id = "2",
+                    name = "pizza",
+                    price = 399.99,
+                    currency = "RUB",
+                    category = "category",
+                    subcategory = "subcategory",
+                    quantity = 2.0F,
+                )
+            )
 
             tracker.event(event)
         }
@@ -124,25 +143,30 @@ class MainActivity : AppCompatActivity() {
             val event = Purchase()
             event.page = "MainActivity"
 
-            event.add(PurchaseItem(
-                id = "1",
-                name = "box",
-                price = 5.99,
-                currency = "RUB",
-                category = "category",
-                subcategory = "subcategory",
-                customParams = mapOf("sample1" to "value1")
-            ))
-            event.add(PurchaseItem(
-                id = "2",
-                name = "pizza",
-                price = 399.99,
-                currency = "RUB",
-                category = "category",
-                subcategory = "subcategory",
-                quantity = 2.0F,
-                customParams = mapOf("sample1" to "value1")
-            ))
+            event.add(
+                PurchaseItem(
+                    id = "1",
+                    name = "box",
+                    price = 5.99,
+                    currency = "RUB",
+                    category = "category",
+                    subcategory = "subcategory",
+                    customParams = mapOf("sample1" to "value1"),
+                    quantity = 1f,
+                )
+            )
+            event.add(
+                PurchaseItem(
+                    id = "2",
+                    name = "pizza",
+                    price = 399.99,
+                    currency = "RUB",
+                    category = "category",
+                    subcategory = "subcategory",
+                    quantity = 2.0F,
+                    customParams = mapOf("sample1" to "value1")
+                )
+            )
 
             tracker.event(event)
         }
