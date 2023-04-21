@@ -32,43 +32,51 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val options = TrackerOptions(
-            bundle = "com.example",
-            partnerId = "1234",
-            uid = "1234",
-            endpointUrl = "https://my-server.com/",
+            bundle = "my.company.example.app",
+            partnerId = "YOUR_PARTNER_ID",
+            sessionId = "YOUR_SESSION_ID",
+            endpointUrl = "YOUR_ENDPOINT",
             debugMode = true,
             headers = mapOf("Authorization" to {
-                "Bearer Test"
+                "Bearer YOUR_AUTHORIZATION_TOKEN"
             })
         )
         val tracker = TechTracker.initialize(options)
 
         findViewById<Button>(R.id.button_add_to_cart).setOnClickListener {
             val event = AddToCart()
-            event.page = "MainActivity"
-
             event.add(
                 AddToCartItem(
-                    id = "1",
-                    name = "box",
-                    price = 5.99,
-                    currency = "RUB",
-                    category = "category",
-                    subcategory = "subcategory",
-                    quantity = 1f,
-                    deltaQuantity = 1f
+                    sku = SKU(
+                        skuId = "1",
+                        skuName = "Lego",
+                        price = 35F,
+                        currency = "RUB"
+                    ),
+                    deltaQuantity = 1.0F,
+                    quantity = 2.0F,
+                    category = listOf(
+                        Category(
+                            categoryId = "1",
+                            categoryName = "Category Name",
+                            children = listOf(
+                                Category(
+                                    categoryId = "11",
+                                    categoryName = "SubCategory Name"
+                                )
+                            )
+                        )
+                    )
                 )
             )
             event.add(
                 AddToCartItem(
-                    id = "2",
-                    name = "pizza",
-                    price = 399.99,
-                    currency = "RUB",
-                    category = "category",
-                    subcategory = "subcategory",
-                    quantity = 2f,
-                    deltaQuantity = 1f
+                    sku = SKU(
+                        skuId = "2",
+                        skuName = "Ozone"
+                    ),
+                    deltaQuantity = 1.0F,
+                    quantity = 2.0F
                 )
             )
 
@@ -77,32 +85,42 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.button_add_to_cart_custom_params).setOnClickListener {
             val event = AddToCart()
-            event.page = "MainActivity"
-
             event.add(
                 AddToCartItem(
-                    id = "1",
-                    name = "box",
-                    price = 5.99,
-                    currency = "RUB",
-                    category = "category",
-                    subcategory = "subcategory",
-                    customParams = mapOf("sample1" to "value1"),
-                    quantity = 1f,
-                    deltaQuantity = 1f,
+                    sku = SKU(
+                        skuId = "1",
+                        skuName = "Lego",
+                        price = 35f,
+                        currency = "RUB"
+                    ),
+                    deltaQuantity = 1.0F,
+                    quantity = 2.0F,
+                    category = listOf(
+                        Category(
+                            categoryId = "1",
+                            categoryName = "Category Name",
+                            children = listOf(
+                                Category(
+                                    categoryId = "11",
+                                    categoryName = "SubCategory Name"
+                                )
+                            )
+                        )
+                    ),
+                    customParams = mapOf(
+                        "custom_param1" to "value1",
+                        "custom_param2" to "value2"
+                    )
                 )
             )
             event.add(
                 AddToCartItem(
-                    id = "2",
-                    name = "pizza",
-                    price = 399.99,
-                    currency = "RUB",
-                    category = "category",
-                    subcategory = "subcategory",
-                    quantity = 2f,
-                    deltaQuantity = 1f,
-                    customParams = mapOf("sample1" to "value1")
+                    sku = SKU(
+                        skuId = "2",
+                        skuName = "Ozone"
+                    ),
+                    deltaQuantity = 1.0F,
+                    quantity = 2.0F
                 )
             )
 
@@ -111,245 +129,469 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.button_purchase).setOnClickListener {
             val event = Purchase()
-            event.page = "MainActivity"
-
             event.add(
                 PurchaseItem(
-                    id = "1",
-                    name = "box",
-                    price = 5.99,
-                    currency = "RUB",
-                    category = "category",
-                    subcategory = "subcategory",
-                    quantity = 1f,
-                )
-            )
-            event.add(
-                PurchaseItem(
-                    id = "2",
-                    name = "pizza",
-                    price = 399.99,
-                    currency = "RUB",
-                    category = "category",
-                    subcategory = "subcategory",
+                    sku = SKU(
+                        skuId = "1",
+                        skuName = "Lego",
+                        price = 35F,
+                        currency = "RUB"
+                    ),
                     quantity = 2.0F,
+                    category = listOf(
+                        Category(
+                            categoryId = "1",
+                            categoryName = "Category Name",
+                            children = listOf(
+                                Category(
+                                    categoryId = "11",
+                                    categoryName = "SubCategory Name"
+                                )
+                            )
+                        )
+                    ),
                 )
             )
-
+            event.add(
+                PurchaseItem(
+                    sku = SKU(
+                        skuId = "2",
+                        skuName = "Ozone"
+                    ),
+                    quantity = 2.0F
+                )
+            )
             tracker.event(event)
         }
 
         findViewById<Button>(R.id.button_purchase_custom_params).setOnClickListener {
             val event = Purchase()
-            event.page = "MainActivity"
-
             event.add(
                 PurchaseItem(
-                    id = "1",
-                    name = "box",
-                    price = 5.99,
-                    currency = "RUB",
-                    category = "category",
-                    subcategory = "subcategory",
-                    customParams = mapOf("sample1" to "value1"),
-                    quantity = 1f,
-                )
-            )
-            event.add(
-                PurchaseItem(
-                    id = "2",
-                    name = "pizza",
-                    price = 399.99,
-                    currency = "RUB",
-                    category = "category",
-                    subcategory = "subcategory",
+                    sku = SKU(
+                        skuId = "1",
+                        skuName = "Lego",
+                        price = 35F,
+                        currency = "RUB"
+                    ),
                     quantity = 2.0F,
-                    customParams = mapOf("sample1" to "value1")
+                    category = listOf(
+                        Category(
+                            categoryId = "1",
+                            categoryName = "Category Name",
+                            children = listOf(
+                                Category(
+                                    categoryId = "11",
+                                    categoryName = "SubCategory Name"
+                                )
+                            )
+                        )
+                    ),
+                    customParams = mapOf(
+                        "custom_param1" to "value1",
+                        "custom_param2" to "value2"
+                    )
                 )
             )
-
+            event.add(
+                PurchaseItem(
+                    sku = SKU(
+                        skuId = "2",
+                        skuName = "Ozone"
+                    ),
+                    quantity = 2.0F
+                )
+            )
             tracker.event(event)
         }
 
         findViewById<Button>(R.id.button_start_view).setOnClickListener {
             val event = StartView(
-                id = "1",
-                name = "Ads"
+                contentId = "1",
+                contentName = "Lego",
+                sku = SKU(
+                    skuId = "1",
+                    skuName = "Lego",
+                    price = 35F,
+                    currency = "RUB"
+                ),
+                category = listOf(
+                    Category(
+                        categoryId = "1",
+                        categoryName = "Category Name",
+                        children = listOf(
+                            Category(
+                                categoryId = "11",
+                                categoryName = "SubCategory Name"
+                            )
+                        )
+                    )
+                ),
             )
-            event.page = "MainActivity"
-
             tracker.event(event)
         }
 
         findViewById<Button>(R.id.button_start_view_custom_params).setOnClickListener {
             val event = StartView(
-                id = "1",
-                name = "Ads",
-                customParams = mapOf("sample1" to "value1")
+                contentId = "1",
+                contentName = "Lego",
+                sku = SKU(
+                    skuId = "1",
+                    skuName = "Lego",
+                    price = 35F,
+                    currency = "RUB"
+                ),
+                category = listOf(
+                    Category(
+                        categoryId = "1",
+                        categoryName = "Category Name",
+                        children = listOf(
+                            Category(
+                                categoryId = "11",
+                                categoryName = "SubCategory Name"
+                            )
+                        )
+                    )
+                ),
+                customParams = mapOf(
+                    "custom_param1" to "value1",
+                    "custom_param2" to "value2"
+                )
             )
-            event.page = "MainActivity"
-
             tracker.event(event)
         }
 
         findViewById<Button>(R.id.button_stop_view).setOnClickListener {
             val event = StopView(
-                id = "1",
-                name = "Ads",
-                value = 0.4,
-                category = "category",
-                subcategory = "subcategory"
+                contentId = "1",
+                contentName = "Lego",
+                value = 0.5F,
+                sku = SKU(
+                    skuId = "1",
+                    skuName = "Lego",
+                    price = 35F,
+                    currency = "RUB"
+                ),
+                category = listOf(
+                    Category(
+                        categoryId = "1",
+                        categoryName = "Category Name",
+                        children = listOf(
+                            Category(
+                                categoryId = "11",
+                                categoryName = "SubCategory Name"
+                            )
+                        )
+                    )
+                ),
             )
-            event.page = "MainActivity"
-
             tracker.event(event)
+
         }
 
         findViewById<Button>(R.id.button_stop_view_custom_params).setOnClickListener {
             val event = StopView(
-                id = "1",
-                name = "Ads",
-                value = 0.4,
-                category = "category",
-                subcategory = "subcategory",
-                customParams = mapOf("sample1" to "value1")
+                contentId = "1",
+                contentName = "Lego",
+                value = 0.5F,
+                sku = SKU(
+                    skuId = "1",
+                    skuName = "Lego",
+                    price = 35F,
+                    currency = "RUB"
+                ),
+                category = listOf(
+                    Category(
+                        categoryId = "1",
+                        categoryName = "Category Name",
+                        children = listOf(
+                            Category(
+                                categoryId = "11",
+                                categoryName = "SubCategory Name"
+                            )
+                        )
+                    )
+                ),
+                customParams = mapOf(
+                    "custom_param1" to "value1",
+                    "custom_param2" to "value2"
+                )
             )
-            event.page = "MainActivity"
-
-            tracker.event(event)
-        }
-
-        findViewById<Button>(R.id.button_viewing).setOnClickListener {
-            val event = Viewing(
-                id = "1",
-                name = "Ads",
-                value = 0.4,
-                category = "category",
-                subcategory = "subcategory"
-            )
-            event.page = "MainActivity"
-
-            tracker.event(event)
-        }
-
-        findViewById<Button>(R.id.button_viewing_custom_params).setOnClickListener {
-            val event = Viewing(
-                id = "1",
-                name = "Ads",
-                value = 0.4,
-                category = "category",
-                subcategory = "subcategory",
-                customParams = mapOf("sample1" to "value1")
-            )
-            event.page = "MainActivity"
-
             tracker.event(event)
         }
 
         findViewById<Button>(R.id.button_search).setOnClickListener {
-            val event = Search("Search Value")
-            event.page = "MainActivity"
-
+            val event = Search(
+                value = "Pampers",
+                filter = mapOf(
+                    "age" to listOf("0-1", "1-3"),
+                    "sex" to listOf("m")
+                ),
+            )
             tracker.event(event)
         }
 
         findViewById<Button>(R.id.button_search_custom_params).setOnClickListener {
-            val event = Search("Search Value", customParams = mapOf("sample1" to "value1"))
-            event.page = "MainActivity"
-
+            val event = Search(
+                value = "Pampers",
+                filter = mapOf(
+                    "age" to listOf("0-1", "1-3"),
+                    "sex" to listOf("m")
+                ),
+                customParams = mapOf(
+                    "custom_param1" to "value1",
+                    "custom_param2" to "value2"
+                )
+            )
             tracker.event(event)
         }
 
         findViewById<Button>(R.id.button_ad_imp).setOnClickListener {
             val event = AdImp(
-                placementId = "1234",
-                width = 320,
-                height = 240,
-                href = "www.google.com",
-                category = "category",
-                subcategory = "subcategory"
+                placementId = "1",
+                width = 240,
+                height = 300,
+                clickURL = "https://test.com",
+                adType = AdType.banner,
+                contentId = "1",
+                contentName = "Lego",
+                sku = SKU(
+                    skuId = "1",
+                    skuName = "Lego",
+                    price = 35F,
+                    currency = "RUB"
+                ),
+                category = listOf(
+                    Category(
+                        categoryId = "1",
+                        categoryName = "Category Name",
+                        children = listOf(
+                            Category(
+                                categoryId = "11",
+                                categoryName = "SubCategory Name"
+                            )
+                        )
+                    )
+                ),
             )
-            event.page = "MainActivity"
-
             tracker.event(event)
         }
 
         findViewById<Button>(R.id.button_ad_imp_custom_params).setOnClickListener {
             val event = AdImp(
-                placementId = "1234",
-                width = 320,
-                height = 240,
-                href = "www.google.com",
-                category = "category",
-                subcategory = "subcategory",
-                customParams = mapOf("sample1" to "value1")
+                placementId = "1",
+                width = 240,
+                height = 300,
+                clickURL = "https://test.com",
+                adType = AdType.banner,
+                contentId = "1",
+                contentName = "Lego",
+                sku = SKU(
+                    skuId = "1",
+                    skuName = "Lego",
+                    price = 35F,
+                    currency = "RUB"
+                ),
+                category = listOf(
+                    Category(
+                        categoryId = "1",
+                        categoryName = "Category Name",
+                        children = listOf(
+                            Category(
+                                categoryId = "11",
+                                categoryName = "SubCategory Name"
+                            )
+                        )
+                    )
+                ),
+                customParams = mapOf(
+                    "custom_param1" to "value1",
+                    "custom_param2" to "value2"
+                )
             )
-            event.page = "MainActivity"
-
             tracker.event(event)
         }
 
         findViewById<Button>(R.id.button_ad_click).setOnClickListener {
             val event = AdClick(
-                placementId = "1234",
-                width = 320,
-                height = 240,
-                href = "www.google.com",
-                category = "category",
-                subcategory = "subcategory"
+                placementId = "1",
+                width = 240,
+                height = 300,
+                clickURL = "https://test.com",
+                adType = AdType.banner,
+                contentId = "1",
+                contentName = "Lego",
+                sku = SKU(
+                    skuId = "1",
+                    skuName = "Lego",
+                    price = 35F,
+                    currency = "RUB"
+                ),
+                category = listOf(
+                    Category(
+                        categoryId = "1",
+                        categoryName = "Category Name",
+                        children = listOf(
+                            Category(
+                                categoryId = "11",
+                                categoryName = "SubCategory Name"
+                            )
+                        )
+                    )
+                ),
             )
-            event.page = "MainActivity"
             tracker.event(event)
         }
 
         findViewById<Button>(R.id.button_ad_click_custom_params).setOnClickListener {
             val event = AdClick(
-                placementId = "1234",
-                width = 320,
-                height = 240,
-                href = "www.google.com",
-                category = "category",
-                subcategory = "subcategory",
-                customParams = mapOf("sample1" to "value1")
+                placementId = "1",
+                width = 240,
+                height = 300,
+                clickURL = "https://test.com",
+                adType = AdType.banner,
+                contentId = "1",
+                contentName = "Lego",
+                sku = SKU(
+                    skuId = "1",
+                    skuName = "Lego",
+                    price = 35F,
+                    currency = "RUB"
+                ),
+                category = listOf(
+                    Category(
+                        categoryId = "1",
+                        categoryName = "Category Name",
+                        children = listOf(
+                            Category(
+                                categoryId = "11",
+                                categoryName = "SubCategory Name"
+                            )
+                        )
+                    )
+                ),
+                customParams = mapOf(
+                    "custom_param1" to "value1",
+                    "custom_param2" to "value2"
+                )
             )
-            event.page = "MainActivity"
             tracker.event(event)
         }
 
         findViewById<Button>(R.id.button_click).setOnClickListener {
-            val event = Click("Click Value")
-            event.page = "MainActivity"
-
+            val event = Click(
+                value = "start registration",
+                contentId = "1",
+                contentName = "Lego",
+                sku = SKU(
+                    skuId = "1",
+                    skuName = "Lego",
+                    price = 35F,
+                    currency = "RUB"
+                ),
+                category = listOf(
+                    Category(
+                        categoryId = "1",
+                        categoryName = "Category Name",
+                        children = listOf(
+                            Category(
+                                categoryId = "11",
+                                categoryName = "SubCategory Name"
+                            )
+                        )
+                    )
+                ),
+            )
             tracker.event(event)
+
         }
 
         findViewById<Button>(R.id.button_click_custom_params).setOnClickListener {
-            val event = Click("Click Value", customParams = mapOf("sample1" to "value1"))
-            event.page = "MainActivity"
-
+            val event = Click(
+                value = "start registration",
+                contentId = "1",
+                contentName = "Lego",
+                sku = SKU(
+                    skuId = "1",
+                    skuName = "Lego",
+                    price = 35F,
+                    currency = "RUB"
+                ),
+                category = listOf(
+                    Category(
+                        categoryId = "1",
+                        categoryName = "Category Name",
+                        children = listOf(
+                            Category(
+                                categoryId = "11",
+                                categoryName = "SubCategory Name"
+                            )
+                        )
+                    )
+                ),
+                customParams = mapOf(
+                    "custom_param1" to "value1",
+                    "custom_param2" to "value2"
+                )
+            )
             tracker.event(event)
         }
 
         findViewById<Button>(R.id.button_scroll).setOnClickListener {
             val event = Scroll(
-                value = 1.2,
-                category = "category",
-                subcategory = "subcategory",
+                value = 0.6F,
+                contentId = "1",
+                contentName = "Lego",
+                sku = SKU(
+                    skuId = "1",
+                    skuName = "Lego",
+                    price = 35F,
+                    currency = "RUB"
+                ),
+                category = listOf(
+                    Category(
+                        categoryId = "1",
+                        categoryName = "Category Name",
+                        children = listOf(
+                            Category(
+                                categoryId = "11",
+                                categoryName = "SubCategory Name"
+                            )
+                        )
+                    )
+                ),
             )
-            event.page = "MainActivity"
-
             tracker.event(event)
         }
 
         findViewById<Button>(R.id.button_scroll_custom_params).setOnClickListener {
             val event = Scroll(
-                value = 1.2,
-                category = "category",
-                subcategory = "subcategory",
-                customParams = mapOf("sample1" to "value1")
+                value = 0.6F,
+                contentId = "1",
+                contentName = "Lego",
+                sku = SKU(
+                    skuId = "1",
+                    skuName = "Lego",
+                    price = 35F,
+                    currency = "RUB"
+                ),
+                category = listOf(
+                    Category(
+                        categoryId = "1",
+                        categoryName = "Category Name",
+                        children = listOf(
+                            Category(
+                                categoryId = "11",
+                                categoryName = "SubCategory Name"
+                            )
+                        )
+                    )
+                ),
+                customParams = mapOf(
+                    "custom_param1" to "value1",
+                    "custom_param2" to "value2"
+                )
             )
-            event.page = "MainActivity"
-
             tracker.event(event)
         }
     }
