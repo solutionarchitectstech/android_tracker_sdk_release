@@ -21,9 +21,23 @@ package com.example.tracking_sdk
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import tech.solutionarchitects.tracking_sdk.TechTracker
-import tech.solutionarchitects.tracking_sdk.TrackerOptions
-import tech.solutionarchitects.tracking_sdk.events.*
+import tech.solutionarchitects.tracking_sdk.api.TechTracker
+import tech.solutionarchitects.tracking_sdk.api.TrackerOptions
+import tech.solutionarchitects.tracking_sdk.api.event
+import tech.solutionarchitects.tracking_sdk.api.events.AdClick
+import tech.solutionarchitects.tracking_sdk.api.events.AdImp
+import tech.solutionarchitects.tracking_sdk.api.events.AdType
+import tech.solutionarchitects.tracking_sdk.api.events.AddToCart
+import tech.solutionarchitects.tracking_sdk.api.events.AddToCartItem
+import tech.solutionarchitects.tracking_sdk.api.events.Category
+import tech.solutionarchitects.tracking_sdk.api.events.Click
+import tech.solutionarchitects.tracking_sdk.api.events.Purchase
+import tech.solutionarchitects.tracking_sdk.api.events.PurchaseItem
+import tech.solutionarchitects.tracking_sdk.api.events.SKU
+import tech.solutionarchitects.tracking_sdk.api.events.Scroll
+import tech.solutionarchitects.tracking_sdk.api.events.Search
+import tech.solutionarchitects.tracking_sdk.api.events.StartView
+import tech.solutionarchitects.tracking_sdk.api.events.StopView
 
 
 class MainActivity : AppCompatActivity() {
@@ -41,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 "Bearer YOUR_AUTHORIZATION_TOKEN"
             })
         )
-        val tracker = TechTracker.initialize(options)
+        val tracker = TechTracker.initialize(context = this.applicationContext, options = options)
 
         findViewById<Button>(R.id.button_add_to_cart).setOnClickListener {
             val event = AddToCart()
