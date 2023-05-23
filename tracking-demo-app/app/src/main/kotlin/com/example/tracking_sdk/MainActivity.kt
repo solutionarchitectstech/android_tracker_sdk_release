@@ -55,7 +55,8 @@ class MainActivity : AppCompatActivity() {
                 "Bearer YOUR_AUTHORIZATION_TOKEN"
             })
         )
-        val tracker = TechTracker.initialize(context = this.applicationContext, options = options)
+        val tracker = TechTracker.initialize(options = options)
+        tracker.uid = "YOUR_UID"
 
         findViewById<Button>(R.id.button_add_to_cart).setOnClickListener {
             val event = AddToCart()
