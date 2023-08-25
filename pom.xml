@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>tech.solutionarchitects.tracking_sdk</groupId>
   <artifactId>standard</artifactId>
-  <version>1.1.1</version>
+  <version>1.2.6</version>
   <packaging>aar</packaging>
   <build>
     <plugins>
@@ -40,6 +40,16 @@
       <groupId>org.jetbrains.kotlinx</groupId>
       <artifactId>kotlinx-coroutines-android</artifactId>
       <version>1.6.4</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.acra</groupId>
+      <artifactId>acra-http</artifactId>
+      <version>5.9.7</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.acra</groupId>
+      <artifactId>acra-limiter</artifactId>
+      <version>5.9.7</version>
     </dependency>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>

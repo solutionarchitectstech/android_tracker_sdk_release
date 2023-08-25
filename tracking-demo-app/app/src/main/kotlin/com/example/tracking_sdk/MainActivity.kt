@@ -53,6 +53,8 @@ class MainActivity : AppCompatActivity() {
             debugMode = true,
             headers = mapOf("Authorization" to {
                 "Bearer YOUR_AUTHORIZATION_TOKEN"
+            }, "User-Agent" to {
+                "YOUR_CUSTOM_USER_AGENT"
             })
         )
         val tracker = TechTracker.initialize(options = options)
