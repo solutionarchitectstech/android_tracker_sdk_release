@@ -67,11 +67,11 @@ class MainActivity : AppCompatActivity() {
                     sku = SKU(
                         skuId = "1",
                         skuName = "Lego",
-                        price = 35F,
+                        price = 35.0,
                         currency = "RUB"
                     ),
-                    deltaQuantity = 1.0F,
-                    quantity = 2.0F,
+                    deltaQuantity = 1.0,
+                    quantity = 2.0,
                     category = listOf(
                         Category(
                             categoryId = "1",
@@ -92,8 +92,8 @@ class MainActivity : AppCompatActivity() {
                         skuId = "2",
                         skuName = "Ozone"
                     ),
-                    deltaQuantity = 1.0F,
-                    quantity = 2.0F
+                    deltaQuantity = 1.0,
+                    quantity = 2.0
                 )
             )
 
@@ -107,11 +107,11 @@ class MainActivity : AppCompatActivity() {
                     sku = SKU(
                         skuId = "1",
                         skuName = "Lego",
-                        price = 35f,
+                        price = 35.0,
                         currency = "RUB"
                     ),
-                    deltaQuantity = 1.0F,
-                    quantity = 2.0F,
+                    deltaQuantity = 1.0,
+                    quantity = 2.0,
                     category = listOf(
                         Category(
                             categoryId = "1",
@@ -136,8 +136,8 @@ class MainActivity : AppCompatActivity() {
                         skuId = "2",
                         skuName = "Ozone"
                     ),
-                    deltaQuantity = 1.0F,
-                    quantity = 2.0F
+                    deltaQuantity = 1.0,
+                    quantity = 2.0
                 )
             )
 
@@ -151,10 +151,10 @@ class MainActivity : AppCompatActivity() {
                     sku = SKU(
                         skuId = "1",
                         skuName = "Lego",
-                        price = 35F,
+                        price = 35.0,
                         currency = "RUB"
                     ),
-                    quantity = 2.0F,
+                    quantity = 2.0,
                     category = listOf(
                         Category(
                             categoryId = "1",
@@ -175,7 +175,7 @@ class MainActivity : AppCompatActivity() {
                         skuId = "2",
                         skuName = "Ozone"
                     ),
-                    quantity = 2.0F
+                    quantity = 2.0
                 )
             )
             tracker.event(event)
@@ -188,10 +188,10 @@ class MainActivity : AppCompatActivity() {
                     sku = SKU(
                         skuId = "1",
                         skuName = "Lego",
-                        price = 35F,
+                        price = 35.0,
                         currency = "RUB"
                     ),
-                    quantity = 2.0F,
+                    quantity = 2.0,
                     category = listOf(
                         Category(
                             categoryId = "1",
@@ -216,7 +216,7 @@ class MainActivity : AppCompatActivity() {
                         skuId = "2",
                         skuName = "Ozone"
                     ),
-                    quantity = 2.0F
+                    quantity = 2.0
                 )
             )
             tracker.event(event)
@@ -229,7 +229,7 @@ class MainActivity : AppCompatActivity() {
                 sku = SKU(
                     skuId = "1",
                     skuName = "Lego",
-                    price = 35F,
+                    price = 35.0,
                     currency = "RUB"
                 ),
                 category = listOf(
@@ -255,7 +255,7 @@ class MainActivity : AppCompatActivity() {
                 sku = SKU(
                     skuId = "1",
                     skuName = "Lego",
-                    price = 35F,
+                    price = 35.0,
                     currency = "RUB"
                 ),
                 category = listOf(
@@ -282,11 +282,11 @@ class MainActivity : AppCompatActivity() {
             val event = StopView(
                 contentId = "1",
                 contentName = "Lego",
-                value = 0.5F,
+                value = 0.5,
                 sku = SKU(
                     skuId = "1",
                     skuName = "Lego",
-                    price = 35F,
+                    price = 35.0,
                     currency = "RUB"
                 ),
                 category = listOf(
@@ -310,11 +310,11 @@ class MainActivity : AppCompatActivity() {
             val event = StopView(
                 contentId = "1",
                 contentName = "Lego",
-                value = 0.5F,
+                value = 0.5,
                 sku = SKU(
                     skuId = "1",
                     skuName = "Lego",
-                    price = 35F,
+                    price = 35.0,
                     currency = "RUB"
                 ),
                 category = listOf(
@@ -366,8 +366,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button_ad_imp).setOnClickListener {
             val event = AdImp(
                 placementId = "1",
-                width = 240,
-                height = 300,
+                width = 240.0,
+                height = 300.0,
                 clickURL = "https://test.com",
                 adType = AdType.banner,
                 contentId = "1",
@@ -375,7 +375,7 @@ class MainActivity : AppCompatActivity() {
                 sku = SKU(
                     skuId = "1",
                     skuName = "Lego",
-                    price = 35F,
+                    price = 35.0,
                     currency = "RUB"
                 ),
                 category = listOf(
@@ -397,8 +397,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button_ad_imp_custom_params).setOnClickListener {
             val event = AdImp(
                 placementId = "1",
-                width = 240,
-                height = 300,
+                width = 240.0,
+                height = 300.0,
                 clickURL = "https://test.com",
                 adType = AdType.banner,
                 contentId = "1",
@@ -406,7 +406,7 @@ class MainActivity : AppCompatActivity() {
                 sku = SKU(
                     skuId = "1",
                     skuName = "Lego",
-                    price = 35F,
+                    price = 35.0,
                     currency = "RUB"
                 ),
                 category = listOf(
@@ -432,8 +432,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button_ad_click).setOnClickListener {
             val event = AdClick(
                 placementId = "1",
-                width = 240,
-                height = 300,
+                width = 240.0,
+                height = 300.0,
                 clickURL = "https://test.com",
                 adType = AdType.banner,
                 contentId = "1",
@@ -441,7 +441,7 @@ class MainActivity : AppCompatActivity() {
                 sku = SKU(
                     skuId = "1",
                     skuName = "Lego",
-                    price = 35F,
+                    price = 35.0,
                     currency = "RUB"
                 ),
                 category = listOf(
@@ -463,8 +463,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button_ad_click_custom_params).setOnClickListener {
             val event = AdClick(
                 placementId = "1",
-                width = 240,
-                height = 300,
+                width = 240.0,
+                height = 300.0,
                 clickURL = "https://test.com",
                 adType = AdType.banner,
                 contentId = "1",
@@ -472,7 +472,7 @@ class MainActivity : AppCompatActivity() {
                 sku = SKU(
                     skuId = "1",
                     skuName = "Lego",
-                    price = 35F,
+                    price = 35.0,
                     currency = "RUB"
                 ),
                 category = listOf(
@@ -503,7 +503,7 @@ class MainActivity : AppCompatActivity() {
                 sku = SKU(
                     skuId = "1",
                     skuName = "Lego",
-                    price = 35F,
+                    price = 35.0,
                     currency = "RUB"
                 ),
                 category = listOf(
@@ -531,7 +531,7 @@ class MainActivity : AppCompatActivity() {
                 sku = SKU(
                     skuId = "1",
                     skuName = "Lego",
-                    price = 35F,
+                    price = 35.0,
                     currency = "RUB"
                 ),
                 category = listOf(
@@ -556,13 +556,13 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.button_scroll).setOnClickListener {
             val event = Scroll(
-                value = 0.6F,
+                value = 0.6,
                 contentId = "1",
                 contentName = "Lego",
                 sku = SKU(
                     skuId = "1",
                     skuName = "Lego",
-                    price = 35F,
+                    price = 35.0,
                     currency = "RUB"
                 ),
                 category = listOf(
@@ -583,13 +583,13 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.button_scroll_custom_params).setOnClickListener {
             val event = Scroll(
-                value = 0.6F,
+                value = 0.6,
                 contentId = "1",
                 contentName = "Lego",
                 sku = SKU(
                     skuId = "1",
                     skuName = "Lego",
-                    price = 35F,
+                    price = 35.0,
                     currency = "RUB"
                 ),
                 category = listOf(
