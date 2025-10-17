@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                 "YOUR_CUSTOM_USER_AGENT"
             })
         )
-        val tracker = TechTracker.initialize(options = options)
+        val tracker = TechTracker.initialize(options = options, lifecycle = lifecycle)
         tracker.uid = "YOUR_UID"
 
         findViewById<Button>(R.id.button_add_to_cart).setOnClickListener {

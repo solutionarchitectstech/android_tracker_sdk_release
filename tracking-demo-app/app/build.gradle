@@ -1,61 +1,56 @@
-/*
- * Copyright © Gusev Andrew, Emelianov Andrew, Spinov Dmitry [collectively referred as the Authors], 2017 - All Rights Reserved
- * [NOTICE: All information contained herein is, and remains the property of the Authors.](notice: All information contained herein is, and remains the property of the Authors.)
- * The intellectual and technical concepts contained herein are proprietary to the Authors
- * and may be covered by any existing patents of any country in the world, patents in
- * process, and are protected by trade secret or copyright law.
- *
- * Dissemination of this information or reproduction of this material is strictly forbidden unless prior
- * written permission is obtained from the Authors. Access to the source code contained herein is hereby forbidden
- * to anyone except persons (natural person, corporate or unincorporated body, whether or not having a separate
- * legal personality, and that person’s personal representatives, and successors)
- * the Authors have granted permission and who have executed Confidentiality and Non-disclosure agreements
- * explicitly covering such access.
- *
- * The copyright notice above does not provide evidence of any actual or intended publication or disclosure
- * of this source code, which in
- */
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
 
 android {
-    compileSdk 31
+    namespace 'com.example.tracking_sdk'
+    compileSdkVersion 36
 
     defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 36
+
         applicationId "com.example.tracking_sdk"
-        minSdk 21
-        targetSdk 31
-        versionCode 1
+        versionCode 3
         versionName "0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debug
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
+
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_1_8)
+        }
     }
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
-    implementation "com.github.solutionarchitectstech:android_tracker_sdk_release:1.3.0"
+    implementation 'com.google.android.material:material:1.4.0'
+
+    implementation "com.github.solutionarchitectstech:android_tracker_sdk_release:1.4.0"
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
